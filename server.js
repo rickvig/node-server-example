@@ -2,12 +2,15 @@ var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    PostbackUpnid = require('./api/models/model'), //created model loading here
     bodyParser = require('body-parser');
 
-// mongoose instance; connection url connection
+require('./api/models/model'), //created model loading here
+require('dotenv').config()
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/postback', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 
+    'mongodb://localhost:27017/serve-node-example', 
+    {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,4 +20,4 @@ routes(app); //register the route
 
 app.listen(port);
 
-console.log('Digest Postback RESTful API server started on: ' + port);
+console.log('Server Node Example RESTful API server started on: ' + port);

@@ -1,6 +1,7 @@
 "use strict";
 
 var mongoose = require("mongoose")
+
 var PromotionHub = mongoose.model("PromotionHub");
 
 exports.receive_a_postback = function (req, res) {
