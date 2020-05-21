@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+[Unit]
+Description=Server Node
+
+[Service]
+PIDFile=/tmp/server-node-99.pid
+User=root
+Group=root
+Restart=always
+KillSignal=SIGQUIT
+WorkingDirectory=/opt/nodejs/server-nodejs
+ExecStart=/opt/nodejs/server-nodejs/server.js
+
+[Install]
+WantedBy=multi-user.target
