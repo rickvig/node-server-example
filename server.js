@@ -4,6 +4,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
+    var cors = require('cors')
+
 require('./api/models/model'), //created model loading here
 require('dotenv').config()
 
@@ -14,6 +16,10 @@ mongoose.connect(process.env.MONGODB_URI ||
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
+// use it before all route definitions
+app.use(cors());
 
 var routes = require('./api/routes/routes'); //importing route
 routes(app); //register the route
