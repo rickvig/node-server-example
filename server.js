@@ -7,6 +7,7 @@ var express = require('express'),
     var cors = require('cors')
 
 require('./api/models/model'), //created model loading here
+require('./api/models/produto'), //created model loading here
 require('dotenv').config()
 
 mongoose.Promise = global.Promise;

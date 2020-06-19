@@ -3,10 +3,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var PromotionHub = new Schema({
+var Produto = new Schema({
     nome: { type: String },
-    deconto: { type: String },
-    valor: { type: String },
+    descrilcao: { type: String },
+    valor: { type: Number },
+    desconto: { type: String },
     
     recieved_date: {
         type: Date,
@@ -14,5 +15,4 @@ var PromotionHub = new Schema({
     },
 });
 
-
-module.exports = mongoose.model('PromotionHub', PromotionHub);
+module.exports = mongoose.model('Produto', Produto);
