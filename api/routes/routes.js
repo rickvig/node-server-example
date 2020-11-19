@@ -10,4 +10,9 @@ module.exports = function (app) {
   app.route("/produtos").post(produtoController.create);
   app.route("/produtos").get(produtoController.list);
   
+  var professionalController = require("../controllers/professional-controller");
+  app.route("/professional").post(professionalController.create);
+  app.route("/professional").get(professionalController.list);
+  app.route('/professional/:id').get(professionalController.get);
+  app.route('/professional/:id').put(professionalController.opa);
 };

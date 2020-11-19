@@ -8,6 +8,7 @@ var express = require('express'),
 
 require('./api/models/model'), //created model loading here
 require('./api/models/produto'), //created model loading here
+require('./api/models/professional'), //created model loading here
 require('dotenv').config()
 
 mongoose.Promise = global.Promise;
@@ -19,11 +20,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// use it before all route definitions
 app.use(cors());
 
-var routes = require('./api/routes/routes'); //importing route
-routes(app); //register the route
+var routes = require('./api/routes/routes'); 
+routes(app); 
+
+app.get('/download', function(req, res){
+    console.log(`DIR: ${__dirname}`)
+    const file = `${__dirname}/files/lorem-ipsum.pdf`;
+    res.download(file); // Set disposition and send it.
+  });
 
 app.listen(port);
 
